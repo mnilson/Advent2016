@@ -1,0 +1,154 @@
+package day12;
+
+import java.io.IOException;
+import java.math.BigInteger;
+
+public class D12Q1 {
+
+	public static int minSteps = 0 ;
+	
+	public static void main(String[] args) throws IOException {
+		int max = 10;
+		int targetX = 7;
+		int targetY = 4;
+		int magicNumber = 10;
+		char[][] map = new char[max][max];
+
+		for (int i = 0; i < map.length; i++) {
+			for (int j = 0; j < map.length; j++) {
+				if (i == targetX && j == targetY) {
+					// if (i == 7 && j == 4) {
+					map[j][i] = 'X';
+				} else if (i == 1 && j == 1) {
+					map[j][i] = 'S';
+				} else if (isWall(i, j, magicNumber, map))
+					map[j][i] = '#';
+				else
+					map[j][i] = ' ';
+			}
+		}
+		printMap(map);
+
+		// try {
+		traverseMap(map, 1, 1, 1);
+		// } catch (StackOverflowError e) {
+		// }
+
+		printMap(map);
+
+	}
+
+	private static char[][] traverseMap(char[][] map, int x, int y, int count) {
+		// move right
+		// move down
+		// move left
+		// move up
+
+		if ((x + 1 < map.length && map[x + 1][y] == 'X')
+				|| (y + 1 < map.length && map[x][y + 1] == 'X')
+				|| (x > 0 && map[x - 1][y] == 'X')
+				|| (y > 0 && map[x][y - 1] == 'X')) {
+			System.out.println("Found!!! " + count);
+			if(minSteps == 0 || count < minSteps){
+				minSteps = count;
+			}
+			printMap(map);
+			return map;
+		}
+
+		if (x + 1 < map.length && map[x + 1][y] == ' ') {
+			// System.out.println(x + "," + y + ": Right");
+			// can move right
+			x = x + 1;
+			map[x][y] = '.';
+			char[][] input = map.clone();
+			// map[x][y] = ' ';
+			char[][] out = traverseMap(input, x, y, ++count);
+			if (input != out) {
+				// changes
+				return out;
+			}
+		}
+		if (y + 1 < map.length && map[x][y + 1] == ' ') {
+			// System.out.println(x + "," + y + ": Down");
+			// can move down
+			y = y + 1;
+			map[x][y] = '.';
+			char[][] input = map.clone();
+			// map[x][y] = ' ';
+			char[][] out = traverseMap(input, x, y, ++count);
+			if (input != out) {
+				// changes
+				return out;
+			}
+		}
+		if (x > 0 && map[x - 1][y] == ' ') {
+			// can move left
+			// System.out.println(x + "," + y + ": Left");
+			x = x - 1;
+			map[x][y] = '.';
+			char[][] input = map.clone();
+			// map[x][y] = ' ';
+			char[][] out = traverseMap(input, x, y, ++count);
+			if (input != out) {
+				// changes
+				return out;
+			}
+		}
+		if (y > 0 && map[x][y - 1] == ' ') {
+			// can move up
+			// System.out.println(x + "," + y + ": Left");
+			y = y - 1;
+			map[x][y] = '.';
+			char[][] input = map.clone();
+			// map[x][y] = ' ';
+			char[][] out = traverseMap(input, x, y, ++count);
+			if (input != out) {
+				// changes
+				return out;
+			}
+		}
+		System.out.println("Dead");
+		return map;
+	}
+
+	private static boolean isWall(int x, int y, Integer magicNumber,
+			char[][] map) {
+		long val = (x * x) + (3 * x) + (2 * x * y) + y + (y * y);
+		val += magicNumber;
+		String bits = BigInteger.valueOf(val).toString(2);
+		int count = 0;
+		while (bits.contains("1")) {
+			bits = bits.replaceFirst("1", "");
+			count++;
+		}
+		System.out.println(x + "," + y + ": " + val + " "
+				+ BigInteger.valueOf(val).toString(2) + " " + count + " "
+				+ (count % 2 == 0));
+		return !(count % 2 == 0);
+	}
+
+	private static void printMap(char[][] map) {
+		// print header.
+		String h1 = "   ", h2 = "   ";
+		for (int h = 0; h < map.length; h++) {
+			if (h % 10 != 0) {
+				h1 += " ";
+			} else {
+				h1 += (h + "").charAt(0);
+			}
+			h2 += h % 10;
+		}
+		h1 = "";
+		h2 = "";
+		System.out.println(h1);
+		System.out.println(h2);
+		for (int i = 0; i < map.length; i++) {
+			// System.out.print(String.format("%1$02d ", i));
+			for (int j = 0; j < map.length; j++) {
+				System.out.print(map[i][j]);
+			}
+			System.out.println();
+		}
+	}
+}

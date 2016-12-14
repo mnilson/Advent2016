@@ -1,0 +1,23 @@
+1480945185950	Rename package 'day3'
+1480945193209	Rename type 'D3Q2'
+1480945207367	Rename type 'D3Q1'
+1481117690035	Rename local variable 'hypersequence'
+1481117724510	Rename local variable 'hypersequence'
+1481121046903	Copy compilation unit
+1481121275386	Rename local variable 'supernet'
+1481121443144	Rename local variable 'Abas'
+1481121706217	Rename type 'D7Q1'
+1481121711548	Rename type 'D7Q2'
+1481121716676	Rename type 'D7Q2new'
+1481122216956	Copy file
+1481202874332	Copy compilation unit
+1481202923807	Rename type 'D7Q2'
+1481202934346	Copy compilation unit
+1481202940897	Move file
+1481203008368	Copy file
+1481290462165	Copy compilation unit
+1481290466484	Copy file
+1481290486718	Rename type 'D8Q1'
+1481293353325	Copy compilation unit
+1481293861536	Extract method 'decompress'
+1481317378461	Extract local variable 'toAdd'

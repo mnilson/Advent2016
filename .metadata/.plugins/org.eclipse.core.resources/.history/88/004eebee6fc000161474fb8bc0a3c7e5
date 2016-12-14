@@ -1,0 +1,28 @@
+package day11;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
+public class D11Q1 {
+
+	public static void main(String[] args) throws IOException {
+		URL url = ClassLoader.getSystemClassLoader().getResource(
+				"day11/input.txt");
+		BufferedReader br = new BufferedReader(new FileReader(url.getFile()));
+
+		String arg = br.readLine();
+		while (arg != null) {
+			System.out.println(arg);
+			
+
+			arg = br.readLine();
+
+		}
+		br.close();
+
+	}
+}

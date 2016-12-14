@@ -1,0 +1,75 @@
+package day12;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+public class D12Q1 {
+
+	public static void main(String[] args) throws IOException {
+		URL url = ClassLoader.getSystemClassLoader().getResource(
+				"day12/input.txt");
+		int max = 50;
+		char[][] map = new char[max][max];
+		BufferedReader br = new BufferedReader(new FileReader(url.getFile()));
+
+		String arg = br.readLine();
+		while (arg != null) {
+			System.out.println("Magic Number: " + arg);
+			Integer magicNumber = Integer.parseInt(arg);
+			for (int i = 0; i < map.length; i++) {
+				for (int j = 0; j < map.length; j++) {
+					if (isMagicNumber(i, j, magicNumber, map))
+						map[i][j] = '#';
+					else
+						map[i][j] = '.';
+				}
+			}
+			printMap(map);
+
+			arg = br.readLine();
+		}
+		br.close();
+
+	}
+
+	private static boolean isMagicNumber(int x, int y, Integer magicNumber,
+			char[][] map) {
+		long val = x * x + 3 * x + 2 * x * y + y + y * y;
+		val += 10;
+		String bits = BigInteger.valueOf(val).toString(2);
+		int count = 0;
+		while (bits.contains("1")) {
+			bits = bits.replaceFirst("1", "");
+			count++;
+		}
+		return count % 2 == 0;
+	}
+
+	private static void printMap(char[][] map) {
+		// print header.
+		String h1 = "", h2 = "";
+		for (int h = 0; h < map.length; h++) {
+			if (h < 10) {
+				h1 += " ";
+			}else{
+				h1 += (h + "").charAt(0);
+			}
+			h2 += h%10;
+		}
+		for (int i = 0; i < map.length; i++) {
+			for (int j = 0; j < map.length; j++) {
+				System.out.print(map[i][j]);
+			}
+			System.out.println();
+		}
+	}
+}

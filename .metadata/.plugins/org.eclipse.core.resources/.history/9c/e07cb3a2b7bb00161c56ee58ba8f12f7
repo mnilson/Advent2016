@@ -1,0 +1,15 @@
+package day6;
+
+public class D6Q2 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		int[][] grid = new int[6][26];
+		Character c = Character.forDigit(10, 25);
+		System.out.println(c);
+
+	}
+
+}

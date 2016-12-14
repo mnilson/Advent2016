@@ -1,0 +1,45 @@
+package day5;
+
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class D5Q1 {
+
+	/**
+	 * @param args
+	 * @throws NoSuchAlgorithmException 
+	 * @throws UnsupportedEncodingException 
+	 */
+	public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		String roomId = "abc";
+		String answer = "";
+//		String in = "abc5278568";
+//		byte[]out = MessageDigest.getInstance("MD5").digest(in.getBytes());
+//		String s = new String(out, "UTF-8");
+//		byte[] out2 = s.getBytes();
+//		System.out.println(s);
+//		for(byte b : out){
+//			System.out.printf("%02x",b);
+//		}
+//		System.out.println();
+		int ix = 0;
+		while (answer.length() < 8){
+			String in = roomId + ix++;
+			if(ix%100 == 0){
+				System.out.println(ix + " " + answer );
+			}
+			byte[]out = MessageDigest.getInstance("MD5").digest(in.getBytes());
+			String hash = String.format("%02x", out[0]) + String.format("%02x", out[1]) +String.format("%02x", out[2]);
+			if(hash.substring(0,5).equals("00000")){
+				System.err.println("Found " + hash);
+				answer += hash.substring(5);
+			}
+
+		}
+		
+		System.out.println("Answer: " + answer);
+
+	}
+
+}

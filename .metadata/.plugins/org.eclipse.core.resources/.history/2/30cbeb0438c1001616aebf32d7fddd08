@@ -1,0 +1,64 @@
+package day12;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+public class D12Q1 {
+
+	public static void main(String[] args) throws IOException {
+		URL url = ClassLoader.getSystemClassLoader().getResource(
+				"day12/input.txt");
+		int max = 50;
+		char[][] map = new char[max][max];
+		BufferedReader br = new BufferedReader(new FileReader(url.getFile()));
+
+		String arg = br.readLine();
+		while (arg != null) {
+			arg = br.readLine();
+			
+			System.out.println("Magic Number: " + arg);
+			Integer magicNumber = Integer.parseInt(arg);
+			initMap(map);
+			for(int i = 0; i < map.length; i ++){
+				for(int j = 0; j < map.length; j++){
+					if(isMagicNumber(i, j, magicNumber, map));
+				}
+			}
+		}
+		br.close();
+
+	}
+	
+	
+	
+	private static boolean isMagicNumber(int i, int j, Integer magicNumber,
+			char[][] map) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+	private static void  initMap(char[][] map) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	private  static void printMap(char[][] map){
+		for(int i = 0; i < map.length; i ++){
+			for(int j = 0; j < map.length; j++){
+				System.out.print(map[i][j]);
+			}
+			System.out.println();
+		}
+	}
+}

@@ -1,0 +1,97 @@
+package day12;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+public class D12Q1 {
+
+	public static void main(String[] args) throws IOException {
+		URL url = ClassLoader.getSystemClassLoader().getResource(
+				"day11/input.txt");
+		BufferedReader br = new BufferedReader(new FileReader(url.getFile()));
+
+		Map<Character, Integer> map = new HashMap<Character, Integer>();
+
+		String arg = br.readLine();
+		List<String> instructions = new ArrayList<String>();
+		while (arg != null) {
+			instructions.add(arg);
+			arg = br.readLine();
+		}
+		;
+		br.close();
+
+		int ix = 0;
+		arg = instructions.get(ix++);
+		while (arg != null) {
+			StringTokenizer st = new StringTokenizer(arg);
+			String instruction = st.nextToken();
+			if (instruction.equalsIgnoreCase("cpy")) {
+				String val1 = st.nextToken();
+				String destination = st.nextToken();
+				if (!map.containsKey(destination.charAt(0))) {
+					// need to put the val
+					map.put(destination.charAt(0), 0);
+				}
+				int toCopy = 0;
+				if (!map.containsKey(val1.charAt(0))) {
+					// this must be a numeric val
+					toCopy = Integer.parseInt(val1);
+				} else {
+					toCopy = map.get(val1.charAt(0));
+				}
+				map.put(destination.charAt(0), toCopy);
+			} else if (instruction.equalsIgnoreCase("inc")) {
+				Character toInc = st.nextToken().charAt(0);
+				if (!map.containsKey(toInc)) {
+					map.put(toInc, 0);
+				}
+				map.put(toInc, map.get(toInc) + 1);
+			} else if (instruction.equalsIgnoreCase("dec")) {
+				Character toDec = st.nextToken().charAt(0);
+				if (!map.containsKey(toDec)) {
+					map.put(toDec, 0);
+				}
+				map.put(toDec, map.get(toDec) - 1);
+			} else if (instruction.equalsIgnoreCase("jnz")) {
+				String jumpRef = st.nextToken();
+				Character ref = jumpRef.charAt(0);
+				int jumpTest = 0;
+				if (!map.containsKey(ref)) {
+					try {
+						jumpTest = Integer.parseInt(jumpRef);
+					} catch (Exception e) {
+					}
+				} else {
+					jumpTest = map.get(ref);
+				}
+				if (jumpTest != 0) {
+					Integer jump = Integer.parseInt(st.nextToken());
+					jump--;
+					ix += jump;
+				}
+			}
+			if (ix >= instructions.size()) {
+				arg = null;
+			} else {
+				arg = instructions.get(ix++);
+			}
+//			printRegisters(map);
+		}
+		printRegisters(map);
+	}
+
+	private static void printRegisters(Map<Character, Integer> map) {
+		for (Character key : map.keySet()) {
+			System.out.print(key + "=" + map.get(key) + " ");
+		}
+		System.out.println();
+	}
+}

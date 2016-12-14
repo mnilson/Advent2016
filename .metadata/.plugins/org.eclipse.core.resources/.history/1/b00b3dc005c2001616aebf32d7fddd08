@@ -1,0 +1,97 @@
+package day13;
+
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class D13Q1 {
+	private static String salt = "abc";
+	private static int keySize = 3;
+	private static int subKeySize = 5;
+	private static int found = 0;
+	
+	public static void main(String[] args) throws IOException,
+			NoSuchAlgorithmException {
+		int ix = 0;
+		while (found < 64) {
+			String in = salt + ix++;
+			byte[] out = MessageDigest.getInstance("MD5").digest(in.getBytes());
+			String possibleHash = getString(out);
+			if (isPossibleHash(possibleHash, keySize)) {
+				// add to map using the current index as the hash
+				System.out.println("Hash: " + possibleHash);
+				confirmHash(possibleHash, ix);
+				System.out.println("Found: " + found);
+				if (found == 64){
+					System.out.println("Done! " + ix );
+					return;
+				}
+			}
+		}
+	}
+
+	private static String getString(byte[] toString) {
+		String result = "";
+		for (int i = 0; i < toString.length; i++) {
+			result += String.format("%02x", toString[i]);
+		}
+		return result;
+	}
+
+	private static boolean isPossibleHash(String input, int size) {
+		char[] toCheck = input.toCharArray();
+
+		for (int i = size; i < input.length(); i++) {
+			int tmp = i;
+			boolean bad = false;
+			while (tmp > 1) {
+				tmp--;
+				if (toCheck[tmp] != toCheck[tmp - 1]) {
+					bad = true;
+					break;
+				}
+			}
+			if (!bad)
+				return true;
+
+		}
+
+		return false;
+	}
+
+	private static boolean confirmHash(String input, int ix) throws NoSuchAlgorithmException {
+		System.out.println("Confirming " + input);
+		char[] toCheck = input.toCharArray();
+		for (int i = keySize; i < input.length(); i++) {
+			int tmp = i;
+			boolean bad = false;
+			while (tmp > 1) {
+				tmp--;
+				if (toCheck[tmp] != toCheck[tmp]) {
+					bad = true;
+					break;
+				}
+			}
+			if (!bad) {
+				String sub = input.substring(i - keySize, i);
+				// check the next 1000 hashes for this substring.
+				String longer = "";
+				for(int k = 0; k < subKeySize; k++){
+					longer+=sub.charAt(0);
+				}
+				 
+				for(int j = 1; j<=1000; j++){
+					byte[] out = MessageDigest.getInstance("MD5").digest((salt+j).getBytes());
+					if(getString(out).contains(longer)){
+						found++;
+						return true;
+					}
+					
+				}
+			}
+
+		}
+
+		return false;
+	}
+}

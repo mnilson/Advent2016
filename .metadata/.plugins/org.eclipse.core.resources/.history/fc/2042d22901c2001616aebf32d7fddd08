@@ -1,0 +1,31 @@
+package day13;
+
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class D13Q1 {
+
+	public static void main(String[] args) throws IOException,
+			NoSuchAlgorithmException {
+		String salt = "abc";
+		int found = 0;
+		int ix = 0;
+		while (found < 8) {
+			String in = salt + ix++;
+			byte[] out = MessageDigest.getInstance("MD5").digest(in.getBytes());
+			String hash = String.format("%02x", out[0])
+					+ String.format("%02x", out[1])
+					+ String.format("%02x", out[2])
+					+ String.format("%02x", out[3]);
+		}
+	}
+	
+	private static String getString(byte[] toString){
+		String result = "";
+		for(int i = 0; i<toString.length; i++){
+		result += String.format("%02x", toString[i]);	
+		}
+		return result;
+	}
+}

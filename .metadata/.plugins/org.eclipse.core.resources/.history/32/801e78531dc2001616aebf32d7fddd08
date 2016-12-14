@@ -1,0 +1,126 @@
+package day13;
+
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
+
+public class D13Q1 {
+	private static String salt = "abc";
+	private static int keySize = 3;
+	private static int subKeySize = 5;
+	private static int found = 0;
+	private static Map<Integer, String> hashes = new HashMap<Integer, String>();
+
+	public static void main(String[] args) throws IOException,
+			NoSuchAlgorithmException {
+		int ix = 0;
+		while (found < 64) {
+			String possibleHash = findHash(ix);
+			if (isPossibleHash(possibleHash, keySize)) {
+				// add to map using the current index as the hash
+				confirmHash(possibleHash, ix);
+			}
+			ix++;
+		}
+	}
+
+	private static String findHash(int ix) {
+		if (hashes.containsKey(ix)) {
+			return hashes.get(ix);
+		}
+		String in = salt + ix;
+		byte[] out = null;
+		try {
+			out = MessageDigest.getInstance("MD5").digest(in.getBytes());
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		String hash = getString(out);
+		hashes.put(ix, hash);
+		return hash;
+	}
+
+	private static String getString(byte[] toString) {
+		String result = "";
+		for (int i = 0; i < toString.length; i++) {
+			result += String.format("%02x", toString[i]);
+		}
+		return result;
+	}
+
+	private static boolean isPossibleHash(String input, int size) {
+		char[] toCheck = input.toCharArray();
+		boolean debug = input
+				.equalsIgnoreCase("347dac6ee8eeea4652c7476d0f97bee5");
+		if (debug)
+			System.out.println(size + " " + input);
+		for (int i = size; i < input.length(); i++) {
+			int tmp = i;
+			boolean bad = false;
+			if (debug)
+				System.out.print(i + " ");
+			while (tmp > i-size+1) {
+				tmp--;
+				char a = toCheck[tmp];
+				char b = toCheck[tmp - 1];
+				if (debug)
+					System.out.print(tmp + " " + a + "=" + b + ", ");
+				if (a != b) {
+					bad = true;
+					break;
+				}
+			}
+			if (debug)
+				System.out.println(" " + bad);
+
+			if (!bad)
+				return true;
+
+		}
+
+		return false;
+	}
+
+	private static boolean confirmHash(String input, int ix)
+			throws NoSuchAlgorithmException {
+		char[] toCheck = input.toCharArray();
+		for (int i = keySize; i < input.length(); i++) {
+			int tmp = i;
+			boolean bad = false;
+			while (tmp > 1) {
+				tmp--;
+				if (toCheck[tmp] != toCheck[tmp]) {
+					bad = true;
+					break;
+				}
+			}
+			if (!bad) {
+				String sub = input.substring(i - keySize, i);
+				// check the next 1000 hashes for this substring.
+				String longer = "";
+				for (int k = 0; k < subKeySize; k++) {
+					longer += sub.charAt(0);
+				}
+
+				for (int j = 1; j <= 1000; j++) {
+					String hash = findHash(j + ix);
+					if (hash.contains(longer)) {
+						found++;
+						System.out.println(found + " @ " + ix + " " + sub + " " + input
+								+ " " + (j + ix) + " " + longer + " " + hash);
+						return true;
+					} else if (ix == 39 && (j + ix) == 816) {
+						System.out.println(found + " @ " + ix + " " + input
+								+ " " + (j + ix) + " " + hash);
+					}
+
+				}
+			}
+
+		}
+
+		return false;
+	}
+}

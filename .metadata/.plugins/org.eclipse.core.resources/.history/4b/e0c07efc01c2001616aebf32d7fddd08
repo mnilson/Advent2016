@@ -1,0 +1,75 @@
+package day13;
+
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
+
+public class D13Q1 {
+
+	public static void main(String[] args) throws IOException,
+			NoSuchAlgorithmException {
+		String salt = "abc";
+		Map<Integer, String> possibles = new HashMap<Integer, String>();
+		int found = 0;
+		int ix = 0;
+		while (found < 64) {
+			String in = salt + ix++;
+			byte[] out = MessageDigest.getInstance("MD5").digest(in.getBytes());
+			String possibleHash = getString(out);
+			if(isPossibleHash(possibleHash)){
+				// add to map using the current index as the hash
+				possibles.put(ix, possibleHash);
+				found++; //FIXME
+				System.out.println(possibleHash);
+				confirmHash(possibleHash, ix);
+			}
+		}
+	}
+	
+	private static String getString(byte[] toString){
+		String result = "";
+		for(int i = 0; i<toString.length; i++){
+		result += String.format("%02x", toString[i]);	
+		}
+		return result;
+	}
+	
+	
+	private static boolean isPossibleHash(String input){
+		char[] toCheck = input.toCharArray();
+		
+		for(int i = 2; i < input.length(); i++){
+			char a = toCheck[i-2];
+			char b = toCheck[i-1];
+			char c = toCheck[i];
+
+			if(a == b && b==c){
+				return true;
+			}
+
+		}
+		
+		return false;
+	}
+	
+	private static boolean confirmHash(String input, int ix){
+		char[] toCheck = input.toCharArray();
+		
+		for(int i = 2; i < input.length(); i++){
+			char a = toCheck[i-2];
+			char b = toCheck[i-1];
+			char c = toCheck[i];
+
+			if(a == b && b==c){
+				String sub = input.substring(i-2, i+1);
+				System.out.println(sub);
+				return false;
+			}
+
+		}
+		
+		return false;
+	}
+}

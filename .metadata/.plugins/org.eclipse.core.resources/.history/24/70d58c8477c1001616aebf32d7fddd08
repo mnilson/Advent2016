@@ -1,0 +1,28 @@
+package day12;
+
+public class Pair implements Comparable<Pair>{
+	int x;
+	int y;
+
+	public Pair(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof Pair) {
+			Pair p = (Pair) o;
+			return p.x == this.x && p.y == this.y;
+		}
+		return super.equals(o);
+	}
+
+	@Override
+	public int compareTo(Pair o) {
+		int result = this.x - o.x;
+		result += ((this.y+100) - (o.y+100));
+		return result;
+	}
+	
+}
