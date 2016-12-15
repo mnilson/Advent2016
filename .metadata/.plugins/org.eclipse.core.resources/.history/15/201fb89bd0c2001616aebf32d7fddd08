@@ -1,0 +1,81 @@
+package day14;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
+public class D14Q1 {
+
+	public static int time = 0;
+	static List<Disc> discs = new ArrayList<Disc>();
+
+	public static void main(String[] args) throws IOException {
+		URL url = ClassLoader.getSystemClassLoader().getResource(
+				"day14/input.txt");
+		BufferedReader br = new BufferedReader(new FileReader(url.getFile()));
+		String arg = br.readLine();
+		while (arg != null) {
+			StringTokenizer st = new StringTokenizer(arg);
+			st.nextToken();// Disk
+			int discNum = Integer.parseInt(st.nextToken().replaceAll("#", ""));
+			st.nextToken(); // has
+			int positions = Integer.parseInt(st.nextToken());
+			st.nextToken(); // positions;
+			st.nextToken(); // at
+			st.nextToken(); // time=0;
+			st.nextToken(); // it
+			st.nextToken(); // is
+			st.nextToken(); // at
+			st.nextToken(); // position
+			String next = st.nextToken();
+			int currPos = Integer
+					.parseInt(next.substring(0, next.length() - 1));
+			discs.add(new Disc(positions, currPos));
+			arg = br.readLine();
+		}
+		for (Disc spin : discs) {
+			System.out.println(" Disc "
+					+ discs.indexOf(spin) + " pos " + spin.currentPosition);
+		}
+		
+		// NOT 368723 or 368724 or 368728
+
+		boolean done = false;
+		while (!done) {
+			int currentTime = time;
+			for (Disc spin : discs) {
+				// System.out.println("currentTime " + currentTime + " Disc " +
+				// discs.indexOf(spin) + " pos " + spin.currentPosition);
+			}
+			done = true;
+			for (Disc d : discs) {
+				currentTime++;
+				for (Disc spin : discs) {
+					spin.moveForward();
+					if (time == 368728)
+						System.out.println("currentTime " + currentTime
+								+ " Disc " + discs.indexOf(spin) + " pos "
+								+ spin.currentPosition);
+				}
+				if (d.currentPosition == 0) {
+					// g2g
+				} else {
+					System.out.println("Start @ " + time + " Bounce @ "
+							+ discs.indexOf(d));
+					done = false;
+					break;
+				}
+			}
+			if (done) {
+				System.out.println("Earliest StartTime = " + time);
+				break;
+			}
+			time++;
+		}
+
+	}
+}

@@ -5,6 +5,7 @@
 </launchGroup>
 <launchGroup id="org.eclipse.debug.ui.launchGroup.debug">
 <mruHistory>
+<launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D14Q1&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D13Q1&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D12Q2&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D12Q1&quot;/&gt;"/>
@@ -14,7 +15,6 @@
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D8Q1&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D7Q2&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D6Q2&quot;/&gt;"/>
-<launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D5Q2&quot;/&gt;"/>
 </mruHistory>
 <favorites/>
 </launchGroup>
@@ -24,6 +24,7 @@
 </launchGroup>
 <launchGroup id="org.eclipse.debug.ui.launchGroup.profile">
 <mruHistory>
+<launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D14Q1&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D13Q1&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D12Q2&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D12Q1&quot;/&gt;"/>
@@ -33,12 +34,12 @@
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D8Q1&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D7Q2&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D6Q2&quot;/&gt;"/>
-<launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D5Q2&quot;/&gt;"/>
 </mruHistory>
 <favorites/>
 </launchGroup>
 <launchGroup id="com.mountainminds.eclemma.ui.launchGroup.coverage">
 <mruHistory>
+<launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D14Q1&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D13Q1&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D12Q2&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D12Q1&quot;/&gt;"/>
@@ -48,12 +49,12 @@
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D8Q1&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D7Q2&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D6Q2&quot;/&gt;"/>
-<launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D5Q2&quot;/&gt;"/>
 </mruHistory>
 <favorites/>
 </launchGroup>
 <launchGroup id="org.eclipse.debug.ui.launchGroup.run">
 <mruHistory>
+<launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D14Q1&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D13Q1&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D12Q2&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D12Q1&quot;/&gt;"/>
@@ -63,7 +64,6 @@
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D8Q1&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D7Q2&quot;/&gt;"/>
 <launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D6Q2&quot;/&gt;"/>
-<launch memento="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;launchConfiguration local=&quot;true&quot; path=&quot;D5Q2&quot;/&gt;"/>
 </mruHistory>
 <favorites/>
 </launchGroup>

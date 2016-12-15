@@ -2075,3 +2075,25 @@ java.lang.OutOfMemoryError: Java heap space
 	at org.eclipse.equinox.launcher.Main.basicRun(Unknown Source)
 	at org.eclipse.equinox.launcher.Main.run(Unknown Source)
 	at org.eclipse.equinox.launcher.Main.main(Unknown Source)
+
+!ENTRY org.eclipse.ui.workbench 2 0 2016-12-15 07:41:50.200
+!MESSAGE A handler conflict occurred.  This may disable some commands.
+!SUBENTRY 1 org.eclipse.ui.workbench 2 0 2016-12-15 07:41:50.200
+!MESSAGE Conflict for 'org.eclipse.ui.navigate.previous':
+HandlerActivation(commandId=org.eclipse.ui.navigate.previous,
+	handler=ActionHandler(org.eclipse.ui.texteditor.GotoAnnotationAction@c0ac0949),
+	expression=AndExpression(LegacyEditorActionBarExpression(org.eclipse.jdt.ui.CompilationUnitEditor),WorkbenchWindowExpression(org.eclipse.ui.internal.WorkbenchWindow@cba02c68)),sourcePriority=4210689)
+HandlerActivation(commandId=org.eclipse.ui.navigate.previous,
+	handler=ActionHandler(org.eclipse.ui.texteditor.GotoAnnotationAction@c0ac0949),
+	expression=AndExpression(LegacyEditorActionBarExpression(org.eclipse.jdt.ui.CompilationUnitEditor),WorkbenchWindowExpression(org.eclipse.ui.internal.WorkbenchWindow@cba02c68)),sourcePriority=4210689)
+
+!ENTRY org.eclipse.ui.workbench 2 0 2016-12-15 07:47:40.130
+!MESSAGE A handler conflict occurred.  This may disable some commands.
+!SUBENTRY 1 org.eclipse.ui.workbench 2 0 2016-12-15 07:47:40.130
+!MESSAGE Conflict for 'org.eclipse.ui.navigate.next':
+HandlerActivation(commandId=org.eclipse.ui.navigate.next,
+	handler=ActionHandler(org.eclipse.ui.texteditor.GotoAnnotationAction@c0279ae),
+	expression=AndExpression(LegacyEditorActionBarExpression(org.eclipse.jdt.ui.CompilationUnitEditor),WorkbenchWindowExpression(org.eclipse.ui.internal.WorkbenchWindow@cba02c68)),sourcePriority=4210689)
+HandlerActivation(commandId=org.eclipse.ui.navigate.next,
+	handler=ActionHandler(org.eclipse.ui.texteditor.GotoAnnotationAction@c0279ae),
+	expression=AndExpression(LegacyEditorActionBarExpression(org.eclipse.jdt.ui.CompilationUnitEditor),WorkbenchWindowExpression(org.eclipse.ui.internal.WorkbenchWindow@cba02c68)),sourcePriority=4210689)

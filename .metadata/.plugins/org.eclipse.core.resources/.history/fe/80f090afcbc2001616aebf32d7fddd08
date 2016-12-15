@@ -1,0 +1,14 @@
+package day14;
+
+public class Disc {
+	int positions;
+	int currentPosition;
+	public Disc(int positions, int current) {
+		this.positions = positions;
+		this.currentPosition = current;
+	}
+	
+	public int moveForward(){
+		return ++currentPosition;
+	}
+}

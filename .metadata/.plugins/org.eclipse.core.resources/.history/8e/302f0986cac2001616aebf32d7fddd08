@@ -1,0 +1,13 @@
+package day14;
+
+import java.io.IOException;
+import java.math.BigInteger;
+
+public class D14Q1 {
+
+	public static int time = 0;
+
+	public static void main(String[] args) throws IOException {
+		
+	}
+}

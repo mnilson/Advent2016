@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class D13Q1 {
-	private static String salt = "abc";
+	private static String salt = "qzyelonm";
 	private static int keySize = 3;
 	private static int subKeySize = 5;
 	private static int found = 0;

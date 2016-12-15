@@ -1,0 +1,22 @@
+package day14;
+
+public class Disc {
+	int positions;
+	int currentPosition;
+
+	public Disc(int positions, int current) {
+		this.positions = positions;
+		this.currentPosition = current;
+	}
+
+	public int moveForward() {
+		currentPosition = currentPosition == positions-1 ? 0
+				: currentPosition + 1;
+		System.out.println(currentPosition + " " + positions);
+		return currentPosition;
+	}
+
+	public int timeUntilZero() {
+		return positions - currentPosition;
+	}
+}
